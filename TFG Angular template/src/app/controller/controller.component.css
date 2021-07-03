@@ -1,0 +1,28 @@
+.drag-drop {
+    display: inline-block;
+    min-width: 50px;
+    padding: 2em 0.5em;
+    margin: 1rem 0 0 1rem;
+   
+    color: #fff;
+    
+    border: solid 2px #fff;
+  
+    touch-action: none;
+  }
+
+  .dropzone {
+    height: 720px;
+    background-color: #bfe4ff;
+    border: dashed 4px;
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    margin-left: 10px;
+    padding: 10px;
+    width: 1490px;
+  }
+  .keycenter{
+      margin-top: 5%;
+      margin-left: 10%;
+      margin-right: 20%;
+  }

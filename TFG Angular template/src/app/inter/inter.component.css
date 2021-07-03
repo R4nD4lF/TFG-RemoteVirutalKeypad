@@ -1,0 +1,106 @@
+
+.dropzone {
+  height: 720px;
+  background-color: #bfe4ff;
+  border: dashed 4px;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  margin-left: 10px;
+  padding: 10px;
+  width: 1490px;
+  transition: background-color 0.3s;
+}
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+.left{
+  width: 10%;
+}
+.drag-drop.switch-bg {
+  background-color: #f40;
+}
+.up{
+  margin-top: 10px;
+}
+.right{
+  margin-left: 30px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  width: 80% ;
+}
+.elements {
+  height: 720px;
+  background-color: #dce6e6;
+  border: dashed 4px;
+  border-radius: 4px;
+  margin: 10px auto 10px;
+  margin-left: 50px;
+  margin-right: 20px;
+  padding: 10px;
+  width: 10%;
+  transition: background-color 0.3s;
+}
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  background-color: #29e;
+  border-color: #fff;
+  border-style: solid;
+}
+.element{
+  min-width: 50px;
+  padding: 2em 0.5em;
+  margin: 1rem 0 0 1rem;
+
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+.drag-drop {
+  display: inline-block;
+  min-width: 50px;
+  padding: 2em 0.5em;
+  margin: 1rem 0 0 1rem;
+ 
+  color: #fff;
+  
+  border: solid 2px #fff;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+.drag-drop.switch-bg {
+  background-color: #f40;
+}
+
+.drag-drop.can-drop {
+  color: white;
+}
+.resize-drag {
+  width: 120px;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 1rem;
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+
+  touch-action: none;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}

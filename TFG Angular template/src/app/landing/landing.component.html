@@ -1,0 +1,258 @@
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <section class="section section-lg section-shaped pb-250 bg-gradient-orange">
+      <div class="shape shape-style-4 shape-primary">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container py-lg-md d-flex">
+        <div class="col px-0">
+          <div class="row">
+            <div class="col-lg-6">
+              <h1 class="display-3  text-dark">Control your devices
+                <span>with your own mobile phone</span>
+              </h1>
+              <p class="lead  text-dark">Create and manage your keypad templates, scan the QR code and take the control of your system. You can change the text and images and you're good to go.</p>
+              <div class="btn-wrapper">
+                <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                  <span class="btn-inner--icon"><i class="fa fa-user-plus"></i></span>
+                  <span class="btn-inner--text">Create Account</span>
+                </a>
+                <a class="btn btn-white btn-icon mb-3 mb-sm-0">
+                  <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
+                  <span (click)="createNewTemplate()" class="btn-inner--text">Create Template</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+    <!-- 1st Hero Variation -->
+  </div>
+  <section class="section section-lg pt-lg-0 mt--200">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="row row-grid">
+            <div class="col-lg-4">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-5">
+                  <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                    <i class="ni ni-controller"></i>
+                  </div>
+                  <h6 class="text-success text-uppercase">Virtual Keypad</h6>
+                  <p class="description mt-3">You dont need a physical controller anymore, take control of any device with your phone.</p>
+                  <div>
+                    <span class="badge badge-pill badge-success">Mobile</span>
+                    <span class="badge badge-pill badge-success">interconection</span>
+                    <span class="badge badge-pill badge-success">Remote</span>
+                  </div>
+                  <a [routerLink]="['/tutorial']" class="btn btn-outline-info mt-4">Learn more</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-5">
+                  <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                    <i class="ni ni-fat-add"></i>
+                  </div>
+                  <h6 class="text-success text-uppercase">Build your template</h6>
+                  <p class="description mt-3">Think about your custom desing and implement it easily with our interactive editor.</p>
+                  <div>
+                    <span class="badge badge-pill badge-success">vision</span>
+                    <span class="badge badge-pill badge-success">imagine</span>
+                    <span class="badge badge-pill badge-success">create</span>
+                  </div>
+                  <a href="javascript:void(0)" (click)="createNewTemplate()" class="btn btn-outline-info mt-4">Create Template</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-5">
+                  <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                    <i class="ni ni-cloud-upload-96"></i>
+                  </div>
+                  <h6 class="text-success text-uppercase">Share your work</h6>
+                  <p class="description mt-3">If you think you have done a great design, share it with other people and get rewards!</p>
+                  <div>
+                    <span class="badge badge-pill badge-success">upload</span>
+                    <span class="badge badge-pill badge-success">contribute</span>
+                    <span class="badge badge-pill badge-success">community</span>
+                  </div>
+                  <a href="javascript:void(0)" class="btn btn-outline-info mt-4">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-lg">
+    <div class="container">
+      <div class="row row-grid align-items-center">
+        <div class="col-md-6 order-md-2">
+          <img src="./assets/img/theme/rafal-jedrzejek-qpsP1IVnSgY-unsplash.jpg" class="img-fluid">
+        </div>
+        <div class="col-md-6 order-md-1">
+          <div class="pr-md-5">
+            <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
+              <i class="ni ni-settings-gear-65"></i>
+            </div>
+            <h3>Awesome features</h3>
+            <p>The kit comes with two pre-built keypads to help you get started faster. You can change the text and buttons and you're good to go.</p>
+            <ul class="list-unstyled mt-5">
+              <li class="py-2">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="badge badge-circle badge-success mr-3">
+                      <i class="ni ni-settings-gear-65"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 class="mb-0">Carefully crafted components</h6>
+                  </div>
+                </div>
+              </li>
+              <li class="py-2">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="badge badge-circle badge-success mr-3">
+                      <i class="ni ni-controller"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 class="mb-0">Amazing keypads examples</h6>
+                  </div>
+                </div>
+              </li>
+              <li class="py-2">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="badge badge-circle badge-success mr-3">
+                      <i class="ni ni-satisfied"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 class="mb-0">Friendly support team</h6>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-secondary">
+    <div class="container">
+      <div class="row row-grid align-items-center">
+        <div class="col-md-6">
+          <div class="card bg-gradient-orange shadow border-0">
+            <img src="./assets/img/theme/hello-i-m-nik-T46vOtEMfA4-unsplash.jpg" class="card-img-top">
+            <blockquote class="card-blockquote">
+              <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
+                <polygon points="0,52 583,95 0,95" class="fill-warning" />
+                <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-warning" />
+              </svg>
+              <h4 class="display-3 font-weight-bold text-dark">Design System</h4>
+              <p class="lead text-italic text-dark">AQUÍ HABLARÉ DEL EDITOR CUANDO ESTÉ HECHO.</p>
+            </blockquote>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="pl-md-5">
+            <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
+              <i class="ni ni-settings"></i>
+            </div>
+            <h3>keypad Editor</h3>
+            <p class="lead">AQUÍ HABLARÉ DEL EDITOR CUANDO ESTÉ HECHO</p>
+            <p>de los botones</p>
+            <p>del texto</p>
+            <a href="javascript:void(0)" class="font-weight-bold text-warning mt-5">Vinculo para ir al editor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-secondary">
+    <div class="container">
+      <div class="card bg-gradient-warning shadow-lg border-0">
+        <div class="p-5">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h3 class="text-dark">We have made an easy quickstart tutorial for you.</h3>
+              <p class="lead text-dark mt-3">Go ahead and create your first template step by step.</p>
+            </div>
+            <div class="col-lg-3 ml-lg-auto">
+              <a [routerLink]="['/tutorial']" class="btn btn-lg btn-block btn-white">Start tutorial</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-lg">
+    <div class="container">
+      <div class="row row-grid justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="display-3">Do you like this
+            <great class="text-warning">Design System?</great>
+            <h3 class="text-dark"> Help us to improve this website by leaving us your opinion!</h3>
+          </h2>
+          <p class="lead"></p>
+          <div class="btn-wrapper">
+            <a [routerLink]="['/contact']" routerLinkActive="router-link-active" class="btn btn-success mb-3 mb-sm-0">Send a message</a>
+          </div>
+          <div class="text-center">
+            <h4 class="display-4 mb-5 mt-5">This project was able to work thanks to:</h4>
+            <div class="row justify-content-center">
+              <div class="col-lg-2 col-4">
+                <a href="https://getbootstrap.com/" target="_blank" placement="top" ngbTooltip="Bootstrap 4 - Most popular front-end component library">
+                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-lg-2 col-4">
+                <a href="https://angular.io/" target="_blank" placement="top" ngbTooltip="Angular - One framework. Mobile &amp; desktop">
+                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-lg-2 col-4">
+                <a href="https://spring.io/projects/spring-boot" target="_blank" placement="top" ngbTooltip="Spring Boot - Open source Java-based framework">
+                  <img src="https://pbs.twimg.com/profile_images/1235868806079057921/fTL08u_H_400x400.png" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-lg-2 col-4">
+                <a href="https://gradle.org/" target="_blank" placement="top" ngbTooltip="Gradle - Groovy project builder">
+                  <img src="https://gradle.org/images/gradle-knowledge-graph-logo.png?20170228" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-lg-2 col-4">
+                <a href="https://rfrancodigital.com/es/home/" target="_blank" placement="top" ngbTooltip="R.Franco Digital - Global solutions for gambling sector">
+                  <img src="https://media-exp1.licdn.com/dms/image/C560BAQFA5dQdJ3TcUw/company-logo_200_200/0/1519908693405?e=2159024400&v=beta&t=j5q7rl2Vt5oyW5N_MggSZAblU95kcOH8f3llIwB89jE" class="img-fluid">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

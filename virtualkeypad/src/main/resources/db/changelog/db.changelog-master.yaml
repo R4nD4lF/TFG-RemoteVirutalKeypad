@@ -1,0 +1,103 @@
+databaseChangeLog: 
+  -  changeSet: 
+      id: tablescreation  
+      author: juanma  
+      changes:  
+        -  createTable:  
+            tableName: user
+            columns:  
+              -  column:  
+                  name: user_id
+                  type: serial
+                  autoIncrement: true  
+                  constraints:  
+                    primaryKey: true  
+                    nullable: false  
+              -  column:  
+                  name: name  
+                  type: nvarchar(50)
+                  constraints:  
+                    nullable: false  
+              -  column:  
+                  name: last_name
+                  type: nvarchar(50)  
+                  constraints:  
+                    nullable: false  
+              -  column:  
+                  name: user_name
+                  type: nvarchar(50)  
+                  constraints:  
+                    nullable: false
+                    unique: true
+              -  column:  
+                  name: password  
+                  type: nvarchar(300)
+                  constraints:  
+                    nullable: false
+              -  column:  
+                  name: email  
+                  type: nvarchar(50)  
+                  constraints:  
+                    nullable: false
+                    unique: true
+        -  createTable:  
+            tableName: template  
+            columns:  
+              -  column:  
+                  name: template_id
+                  type: serial
+                  autoIncrement: true  
+                  constraints:  
+                    primaryKey: true  
+                    nullable: false  
+              -  column:  
+                  name: user_id
+                  type: serial
+                  constraints:  
+                    nullable: false  
+              -  column:  
+                  name: name  
+                  type: nvarchar(50)  
+                  constraints:  
+                    nullable: false
+              - column:
+                  name: background
+                  type: nvarchar(5000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image
+                  type: clob
+                  constraints:
+                    nullable: false
+              -  column:
+                  name: creationdate
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              -  column:  
+                  name: buttons  
+                  type: clob
+                  constraints:  
+                    nullable: false
+              -  column:  
+                  name: texts  
+                  type: clob
+                  constraints:  
+                    nullable: false
+              - column:
+                  name: token
+                  type: nvarchar(50)
+                  constraints:
+                    unique: true
+                    nullable: true
+
+        -  addForeignKeyConstraint:  
+            baseColumnNames: user_id
+            baseTableName: template
+            constraintName: fk_template_user
+            onDelete: CASCADE  
+            onUpdate: RESTRICT  
+            referencedColumnNames: user_id
+            referencedTableName: user
+

@@ -1,0 +1,75 @@
+<main>
+    <section class="section section-shaped section-lg">
+        <div class="shape shape-style-5 bg-gradient-orange">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container pt-lg-md">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="card bg-gradient-secondary shadow">
+                <div class="card-body p-lg-5">
+                  <h4 class="mb-1">Contact with us</h4>
+                  <p class="mt-0">Your opinion is very important to us, you can contact us by sending a message or calling on the phone. </p>
+                  
+                  <div class="form-group mt-5" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Your name" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Email address" type="email" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
+                  </div>
+                  <div class="form-group mb-4">
+                    <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-success btn-round btn-block btn-lg">Send Message</button>
+                  </div>
+                  <ul class="list-unstyled mt-5">
+                    <li class="py-2">
+                      <div class="d-flex align-items-center">
+                        <div>
+                          <div class="badge badge-circle badge-info mr-3">
+                            <i class="ni ni-headphones"></i>
+                          </div>
+                        </div>
+                        <div>
+                          <h6 class="mb-0">Tel: +34 999 88 77 66</h6>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="py-2">
+                      <div class="d-flex align-items-center">
+                        <div>
+                          <div class="badge badge-circle badge-info mr-3">
+                            <i class="ni ni-world"></i>
+                          </div>
+                        </div>
+                        <div>
+                          <h6 class="mb-0">Calle Rueda, 69 - 13247 Salamanca - España</h6>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</main>

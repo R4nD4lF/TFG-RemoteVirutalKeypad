@@ -1,0 +1,779 @@
+openapi: 3.0.0
+info:
+  description: >-
+    This API REST allows us to manage the users and templates of a remote virtual controller.
+  version: 1.1.4
+  title: RemoteVirtualController
+  contact:
+    email: jpalacios@externos.rfranco.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+tags:
+  - name: Templates
+    description: >-
+      A group of functions is created to include a set of operations to allow us manage the templates in a SpringBoot project.
+  - name: Users
+    description: >-
+      This group of functions allos us manage the users in the database.
+  - name: Sockets
+    description: >-
+      Allows to manage the necesary functions to work with websockets.
+  - name: Access
+    description: >-
+      This set of functions allows to singup as a user, login and logout of the system.
+
+
+servers:
+  - url: '/api/v1'
+  - url: '{schema}://{env}:{port}/{api}'
+    variables:
+      schema:
+        enum:
+          - http
+          - htpps
+        default: http
+      env:
+        default: localhost
+      port:
+        default: '8080'
+      api:
+        default: ''
+
+paths:
+
+
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Returns the users in the system.
+      operationId: getUsers
+      security:
+        - bearerAuth: []
+      description: |
+        This function returns all the users in the system accourding of the searching parameters.
+      parameters:
+        - $ref: "#/components/parameters/name"
+        - $ref: "#/components/parameters/lastname"
+        - $ref: "#/components/parameters/email"
+      responses:
+        '200':
+          description: >-
+            Positive response. It will return an array of users if it's possible to find them or an empty array if the requested parameters are not met.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/userReponse'
+        '400':
+          description: Bad Request.
+        '403':
+          description: Forbidden.
+        '500':
+          description: Internal server error.
+  /users/{userId}:
+    get:
+      tags:
+        - Users
+      summary: Returns the users in the system.
+      operationId: getUser
+      security:
+        - bearerAuth: []
+      description: |
+        It will return the user wich userId concur with the user that we are requesting.
+      parameters:
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '200':
+          description: >-
+            Positive response. It will return the user info.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userReponse'
+        '400':
+          description: Bad Request.
+        '404':
+          description: Not found. The user with the userId requested couldn't be found.
+        '500':
+          description: Internal server error.
+    put:
+      tags:
+        - Users
+      summary: Update a user in the system.
+      operationId: updateUser
+      security:
+        - bearerAuth: []
+      description: |
+        It will update the user info in order of his userId.
+      parameters:
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        description: Info of the user that we want to modify.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userReponse'
+      responses:
+        '201':
+          description: >-
+            Positive response. The user have been updated.
+        '400':
+          description: Bad Request.
+        '404':
+          description: Not found. The user with the userId requested couldn't be found.
+        '500':
+          description: Internal server error.
+    delete:
+      tags:
+        - Users
+      summary: Deletes the user with the requested userId.
+      operationId: deleteUser
+      security:
+        - bearerAuth: []
+      description: |
+        It will delete the user with the userId requested.
+      parameters:
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '200':
+          description: >-
+            Positive response. The user have been deleted.
+        '400':
+          description: Bad Request.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not found. The user with the userId requested couldn't be found.
+        '500':
+          description: Internal server error.
+  /users/{userId}/templates:
+    get:
+      tags:
+        - Templates
+      summary: Returns the templates of the system.
+      operationId: getTemplates
+      security:
+        - bearerAuth: []
+      description: |
+        It will return the template wich templateId concur with the template that we are requesting.
+      parameters:
+        - $ref: "#/components/parameters/userId"
+        - $ref: "#/components/parameters/templatename"
+        - $ref: "#/components/parameters/startdate"
+        - $ref: "#/components/parameters/enddate"
+        - $ref: "#/components/parameters/token"
+        - $ref: "#/components/parameters/order"
+      responses:
+        '200':
+          description: >-
+            Positive response. It will return an array of templates if it's possible to find them or an empty array if the requested parameters are not met.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/templateResponse'
+        '400':
+          description: Bad Request.
+        '403':
+          description: Forbidden.
+        '500':
+          description: Internal server error.
+    post:
+      tags:
+        - Templates
+      summary: Creates a template in the system.
+      operationId: createTemplate
+      security:
+        - bearerAuth: []
+      description: |
+        It will create a new template in the system.
+      parameters:
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        description: Info of the template to be created in the system.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/templateRequest'
+      responses:
+        '201':
+          description: >-
+            Posotive res ponse. The template have been created.
+        '400':
+          description: Bad Request.
+        '409':
+          description: Conflict. Template already exist with that templateId or templatename.
+        '500':
+          description: Internal server error.
+  /users/{userId}/templates/{templateId}:
+    get:
+      tags:
+        - Templates
+      summary: Returns the templates in the system.
+      operationId: getTemplate
+      security:
+        - bearerAuth: []
+      description: |
+        It will return the user wich userId concur with the user that we are requesting.
+      parameters:
+        - $ref: "#/components/parameters/templateId"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '200':
+          description: >-
+            Respuesta positiva. Devolverá la información de la plantilla solicitada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/templateResponse'
+        '400':
+          description: Bad Request.
+        '404':
+          description: Not found.  The template with the templateId requested couldn't be found.
+        '500':
+          description: Internal server error.
+    put:
+      tags:
+        - Templates
+      summary: Update a template in the system.
+      operationId: updateTemplate
+      security:
+        - bearerAuth: []
+      description: |
+        It will update the template info in order of his templateId.
+      parameters:
+        - $ref: "#/components/parameters/templateId"
+        - $ref: "#/components/parameters/userId"
+      requestBody:
+        required: true
+        description: Info of the template to be modify in the system.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/templateResponse'
+      responses:
+        '200':
+          description: >-
+            Positive response. The template have been updated.
+        '400':
+          description: Bad Request.
+        '404':
+          description: Not found.  The template with the templateId requested couldn't be found.
+        '500':
+          description: Internal server error.
+    delete:
+      tags:
+        - Templates
+      summary: Deletes a template in the system.
+      operationId: deleteTemplate
+      security:
+        - bearerAuth: []
+      description: |
+        It will delete the template wich templateId concur with the template that we are requesting.
+      parameters:
+        - $ref: "#/components/parameters/templateId"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '200':
+          description: >-
+            Positive response. The template have been deleted.
+        '400':
+          description: Bad Request.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not found.  The template with the templateId requested couldn't be found.
+        '500':
+          description: Internal server error.
+  /websockets:
+    post:
+      tags:
+        - Sockets
+      summary: Creates a new socket in the system.
+      operationId: createSocket
+      security:
+        - bearerAuth: []
+      description: |
+        It will create a new socket in the system.
+      requestBody:
+        required: true
+        description: Info of the socket to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/socketRequest'
+      responses:
+        '201':
+          description: >-
+            Positive response. The socket have been created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/socketResponse'
+        '400':
+          description: Bad Request.
+        '500':
+          description: Internal server error.
+  /login:
+    post:
+      tags:
+        - Access
+      summary: Allows to log in the system
+      operationId: login
+      description: |
+        Allows us to log in the system introducing login and password.
+      requestBody:
+        required: true
+        description: A JSON object that contains the login and password.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginRequest'
+      responses:
+        '200':
+          description: >-
+            Positive response. Success accessing the system.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginResponse'
+        '400':
+          description: Bad Request.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not Found. Couldn't find a user with these credentials.
+        '500':
+          description: Internal server error.
+  /logout:
+    post:
+      tags:
+        - Access
+      summary: Allows to log out of the system.
+      operationId: logout
+      description: |
+        It will close the sesion in the system.
+      requestBody:
+        required: true
+        description: Info of the user that is going to log out.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginRequest'
+      responses:
+        '200':
+          description: >-
+            Positive response. Success login out of the system.
+        '400':
+          description: Bad Request.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Not Found. Couldn't find a user with these credentials.
+        '500':
+          description: Internal server error.
+  /singup:
+    post:
+      tags:
+        - Access
+      summary: Creates a user in the system.
+      operationId: createUser
+      description: |
+        It will create a new user in the system with unique data as userId and username.
+      requestBody:
+        required: true
+        description: Info of the user to be created in the system.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userRequest'
+      responses:
+        '201':
+          description: >-
+            Positive response. Success creating the user in the system.
+        '400':
+          description: Bad Request.
+        '409':
+          description: Conflict. User already exist with that userId.
+        '500':
+          description: Internal server error.
+
+  /users/{userId}/templates/{templateId}/token:
+    get:
+      tags:
+        - Templates
+      summary: Returns the token of the template.
+      operationId: getToken
+      security:
+        - bearerAuth: []
+      description: |
+        This function returns the token of the specific template.
+      parameters:
+        - $ref: "#/components/parameters/templateId"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '200':
+          description: >-
+            Positive response. It will return a token of a specific template.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/tokenResponse'
+        '400':
+          description: Bad Request.
+        '404':
+          description: Not Found.
+        '500':
+          description: Internal server error.
+    post:
+      tags:
+        - Templates
+      summary: Creates a token in the system.
+      operationId: createToken
+      security:
+        - bearerAuth: [ ]
+      description: |
+        It will create a new token in the system with unique data.
+      parameters:
+        - $ref: "#/components/parameters/templateId"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '201':
+          description: >-
+            Positive response. Success creating the token in the system.
+        '404':
+          description: Not Found.
+        '409':
+          description: Conflict. Token already exist with that templateId.
+        '500':
+          description: Internal server error.
+    delete:
+      tags:
+        - Templates
+      summary: Deletes a token in the system.
+      operationId: deleteToken
+      security:
+        - bearerAuth: []
+      description: |
+        It will delete the token wich templateId concur with the template that we are requesting.
+      parameters:
+        - $ref: "#/components/parameters/templateId"
+        - $ref: "#/components/parameters/userId"
+      responses:
+        '200':
+          description: >-
+            Positive response. The token have been deleted.
+        '400':
+          description: Bad Request.
+        '403':
+          description: Forbidden.
+        '404':
+          description: Not found.  The template with the templateId requested couldn't be found.
+        '500':
+          description: Internal server error.
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: Introduce the JWT to access.
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      description: There is no access token or the token provided is invalid.
+  schemas:
+    enumSortDirection:
+      type: string
+      enum:
+        - ASC
+        - DESC
+    loginRequest:
+      type: object
+      properties:
+        login:
+          type: string
+          example: login
+        password:
+          type: string
+          example: password
+    loginResponse:
+      type: object
+      properties:
+        login:
+          type: string
+          example: user
+        jwt:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        id:
+          type: integer
+          example: 1
+    userRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: myname
+        lastname:
+          type: string
+          example: milastname
+        username:
+          type: string
+          example: myUserName
+        password:
+          type: string
+          example: mypass
+        email:
+          type: string
+          format: email
+          example: my-email@gmail.com
+    userReponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: myname
+        lastname:
+          type: string
+          example: milastname
+        username:
+          type: string
+          example: myUserName
+        password:
+          type: string
+          example: mypass
+        email:
+          type: string
+          format: email
+          example: my-email@gmail.com
+    templateResponse:
+      type: object
+      properties:
+        templateId:
+          type: integer
+          example: 20
+        name:
+          type: string
+          example: n64controller
+        backgroundimage:
+          type: string
+          example: this is the img url
+        image:
+          type: string
+          example: imageDATA
+        creationdate:
+          type: string
+          format: date
+          example: "2021-01-30"
+        buttons:
+          type: array
+          items:
+            $ref: '#/components/schemas/button'
+        texts:
+          type: array
+          items:
+            $ref: '#/components/schemas/text'
+
+    templateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: n64controller
+        backgroundimage:
+          type: string
+          example: this is the img url
+        image:
+          type: string
+          example: imageDATA
+        creationdate:
+          type: string
+          format: date
+          example: "2021-01-30"
+        buttons:
+          type: array
+          items:
+            $ref: '#/components/schemas/button'
+        texts:
+          type: array
+          items:
+            $ref: '#/components/schemas/text'
+    button:
+      type: object
+      properties:
+        commandKey:
+          type: string
+          example: jnf9n2
+        content:
+          type: string
+          example: this is a button
+        payload:
+          type: string
+          example: dq23jjg88
+        positionX:
+          type: number
+          example: 18.0156
+        positionY:
+          type: number
+          example: 1.078
+        width:
+          type: number
+          example: 299.813
+        height:
+          type: number
+          example: 92.9843
+        condition:
+          $ref: '#/components/schemas/condition'
+    text:
+      type: object
+      properties:
+        content:
+          type: string
+          example: this is a text
+        positionX:
+          type: number
+          example: 9.56
+        positionY:
+          type: number
+          example: 0.078
+        width:
+          type: number
+          example: 299.81
+        height:
+          type: number
+          example: 92.9843
+        condition:
+          $ref: '#/components/schemas/condition'
+    condition:
+      type: object
+      properties:
+        commandKeyReceived:
+          type: string
+          example: fjkasdk2
+        action:
+          type: boolean
+          example: true
+    socketRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          example: 91fe7618-d4e4-4f22-bea2-47769e82df80
+        command:
+          type: string
+          example: UP
+    socketResponse:
+      type: object
+      properties:
+        destination:
+          type: string
+          example: /queue/91fe7618-d4e4-4f22-bea2-47769e82df80
+        payload:
+          type: string
+          example: UP
+    tokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: 08a778b9-91ec-4d42-9155-65de35a490aa
+  parameters:
+    socketId:
+      name: socketId
+      in: path
+      description: "Indicates the exactly socket ID."
+      required: true
+      schema:
+        type: integer
+    userId:
+      name: userId
+      in: path
+      description: "Indicates the exactly user ID."
+      required: true
+      schema:
+        type: integer
+    token:
+      name: token
+      in: query
+      description: "Indicates the exactly token."
+      required: false
+      schema:
+        type: string
+    templateId:
+      name: templateId
+      in: path
+      description: "Indicates the exactly template ID."
+      required: true
+      schema:
+        type: integer
+    name:
+      name: name
+      in: query
+      description: "It will return the users with this name if it's specified."
+      required: false
+      schema:
+        type: string
+      example: MyName
+    templatename:
+      name: templatename
+      in: query
+      description: "It will return the templates with this name if it's specified."
+      required: false
+      schema:
+        type: string
+      example: personaltemplate
+    startdate:
+      name: startdate
+      in: query
+      description: "First date for the search range of templates."
+      required: false
+      schema:
+        type: string
+        format: date
+      example: "2021-01-16"
+    enddate:
+      name: enddate
+      in: query
+      description: "Limit date for the search range of templates."
+      required: false
+      schema:
+        type: string
+        format: date
+      example: "2021-01-28"
+    lastname:
+      name: lastname
+      in: query
+      description: "It will return the users with this lastname if it's specified."
+      required: false
+      schema:
+        type: string
+      example: Lastname
+    email:
+      name: email
+      in: query
+      description: "It will return the users with this email if it's specified."
+      required: false
+      schema:
+        type: string
+      example: my-email@gmail.com
+    order:
+      name: order
+      in: query
+      description: "It will order the results in date order."
+      required: false
+      schema:
+        $ref: '#/components/schemas/enumSortDirection'
+        
