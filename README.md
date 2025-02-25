@@ -12,7 +12,7 @@ The project structure and components are:
  - **TFG Angular Template** -> Web application the interacts with the API. Developed with Angular.
 
 ## Dependencies
- - Java 11
+ - Java 11-15
  - Gradle 6.8.2
  - SpringBoot 2.4.2
  - OpenAPI 5.0.0
