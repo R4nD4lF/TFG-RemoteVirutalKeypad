@@ -42,9 +42,10 @@ ng update
 ng serve
 ```
 
-## Future Work
-There are several imprevements that can be done to de project. The first and more important is to develop a mobile APP to display and manage the keypad templates with React Native or Native Script.
+## Future Work and improvements
+There are several improvements that can be done to de project. The first and more important is to develop a mobile APP to display and manage the keypad templates with React Native or Native Script.
 Improve the web, api and websocket server:
   - Let the user load his own sprites for text and buttons
   - Events in the keyboard. For example, if the Snake game implemented levels there could be an event in the mobile when it happens.
   - Stay updated with new tools for TypeScript that could improve InteractJs
+  - Make the desployment full automatic with docker-compose, not just the Postgres DB.
