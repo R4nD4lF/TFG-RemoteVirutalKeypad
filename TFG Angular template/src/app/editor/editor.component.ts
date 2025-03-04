@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { TemplateModel } from 'src/model/template.model';
 import { UserModel } from 'src/model/user.model';
 import { TemplateService } from 'src/services/template.service';
@@ -7,9 +8,10 @@ import { UserService } from 'src/services/user.service';
 import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-editor',
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css']
+    selector: 'app-editor',
+    templateUrl: './editor.component.html',
+    styleUrls: ['./editor.component.css'],
+    standalone: false
 })
 export class EditorComponent implements OnInit {
   userData:UserModel;
@@ -23,6 +25,8 @@ export class EditorComponent implements OnInit {
     private templateService:TemplateService,
     private route: ActivatedRoute) { }
 
+    private destroy$ = new Subject<void>();
+    
   ngOnInit(): void {
     this.userData = new UserModel();
     this.response = this.userService.getUser();
@@ -32,6 +36,7 @@ export class EditorComponent implements OnInit {
     this.userData.template = this.response.templateModelList;
     if(parseInt(this.route.snapshot.paramMap.get("id"))){
       this.templateService.getTemplate(parseInt(this.route.snapshot.paramMap.get("id")))
+      .pipe(takeUntil(this.destroy$))
       .subscribe(resp => {
         console.log(resp);
         (<HTMLInputElement>document.getElementById("Name")).value = resp['name'];
@@ -41,7 +46,10 @@ export class EditorComponent implements OnInit {
       }));
       
     }
-    
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
   errorLoadModal(msg1:string,msg2:string){
     Swal.fire(

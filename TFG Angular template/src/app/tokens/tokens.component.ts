@@ -4,13 +4,14 @@ import { TemplateModel } from 'src/model/template.model';
 import { TemplateService } from 'src/services/template.service';
 import Swal from 'sweetalert2';
 
-import * as QRCode from 'qrcode';
+import QRCode from 'qrcode';
 
 
 @Component({
-  selector: 'app-tokens',
-  templateUrl: './tokens.component.html',
-  styleUrls: ['./tokens.component.css']
+    selector: 'app-tokens',
+    templateUrl: './tokens.component.html',
+    styleUrls: ['./tokens.component.css'],
+    standalone: false
 })
 export class TokensComponent implements OnInit {
   qrcodeimage;

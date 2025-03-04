@@ -3,19 +3,24 @@ import java.lang.reflect.Type;
 
 import java.lang.String;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Component
+@PropertySource("classpath:application.properties")
 public class SessionHandler extends StompSessionHandlerAdapter {
 
-
-
+    @Value("${snake.token.direction}")
+    private String token;
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-
-        session.subscribe("/queue/1a279e52-d78a-4540-8298-22a31457b1c4", this);
+        session.subscribe("/queue/c281ac6d-cc7f-4ac8-8b0f-5c191efabc26", this);
     }
 
     @Override

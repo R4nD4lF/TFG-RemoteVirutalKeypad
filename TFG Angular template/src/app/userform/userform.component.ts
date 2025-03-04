@@ -6,9 +6,10 @@ import { UserService } from 'src/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-userform',
-  templateUrl: './userform.component.html',
-  styleUrls: ['./userform.component.css']
+    selector: 'app-userform',
+    templateUrl: './userform.component.html',
+    styleUrls: ['./userform.component.css'],
+    standalone: false
 })
 export class UserformComponent implements OnInit {
   test : Date = new Date();

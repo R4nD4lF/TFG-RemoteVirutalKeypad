@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -29,35 +29,28 @@ import { ControllerComponent } from './controller/controller.component';
 
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    LandingComponent,
-    NavbarComponent,
-    FooterComponent,
-    LoginComponent,
-    UserHomeComponent,
-    TeamComponent,
-    ContactComponent,
-    TutorialComponent,
-    KeypadsComponent, 
-    EditorComponent,
-    UserformComponent,
-    InterComponent,
-    TokensComponent,
-    ControllerComponent,
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    FormsModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HomeModule
-  ],
-  providers: [UserService,TemplateService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SignupComponent,
+        LandingComponent,
+        NavbarComponent,
+        FooterComponent,
+        LoginComponent,
+        UserHomeComponent,
+        TeamComponent,
+        ContactComponent,
+        TutorialComponent,
+        KeypadsComponent,
+        EditorComponent,
+        UserformComponent,
+        InterComponent,
+        TokensComponent,
+        ControllerComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        NgbModule,
+        FormsModule,
+        RouterModule,
+        AppRoutingModule,
+        HomeModule], providers: [UserService, TemplateService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

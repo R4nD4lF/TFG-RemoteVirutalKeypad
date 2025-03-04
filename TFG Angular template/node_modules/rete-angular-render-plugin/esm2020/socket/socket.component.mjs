@@ -1,0 +1,20 @@
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Input as ReteInput } from 'rete';
+import * as i0 from "@angular/core";
+import * as i1 from "@angular/common";
+export class SocketComponent {
+    get type() {
+        return this.io instanceof ReteInput ? 'input' : 'output';
+    }
+}
+SocketComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.2", ngImport: i0, type: SocketComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+SocketComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.1.2", type: SocketComponent, selector: "rete-socket", inputs: { socket: "socket", io: "io" }, ngImport: i0, template: `<div *ngIf="socket" class="socket" [ngClass]="[type, socket.name]" [title]="socket.name"></div>`, isInline: true, styles: [":host{display:inline-block}.socket{display:inline-block;cursor:pointer;border:1px solid white;border-radius:12px;width:24px;height:24px;margin:6px;vertical-align:middle;background:#96b38a;z-index:2;box-sizing:border-box}.socket:hover{border-width:4px}.socket.multiple{border-color:#ff0}.socket.output{margin-right:-12px}.socket.input{margin-left:-12px}\n"], dependencies: [{ kind: "directive", type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }, { kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.2", ngImport: i0, type: SocketComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'rete-socket', template: `<div *ngIf="socket" class="socket" [ngClass]="[type, socket.name]" [title]="socket.name"></div>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [":host{display:inline-block}.socket{display:inline-block;cursor:pointer;border:1px solid white;border-radius:12px;width:24px;height:24px;margin:6px;vertical-align:middle;background:#96b38a;z-index:2;box-sizing:border-box}.socket:hover{border-width:4px}.socket.multiple{border-color:#ff0}.socket.output{margin-right:-12px}.socket.input{margin-left:-12px}\n"] }]
+        }], propDecorators: { socket: [{
+                type: Input
+            }], io: [{
+                type: Input
+            }] } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic29ja2V0LmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zb2NrZXQvc29ja2V0LmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsU0FBUyxFQUFFLEtBQUssRUFBRSx1QkFBdUIsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUMxRSxPQUFPLEVBQWMsS0FBSyxJQUFJLFNBQVMsRUFBRSxNQUFNLE1BQU0sQ0FBQzs7O0FBU3RELE1BQU0sT0FBTyxlQUFlO0lBSTFCLElBQUksSUFBSTtRQUNOLE9BQU8sSUFBSSxDQUFDLEVBQUUsWUFBWSxTQUFTLENBQUMsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDO0lBQzNELENBQUM7OzRHQU5VLGVBQWU7Z0dBQWYsZUFBZSwyRkFKaEIsaUdBQWlHOzJGQUloRyxlQUFlO2tCQU4zQixTQUFTOytCQUNFLGFBQWEsWUFDYixpR0FBaUcsbUJBRTFGLHVCQUF1QixDQUFDLE1BQU07OEJBR3RDLE1BQU07c0JBQWQsS0FBSztnQkFDRyxFQUFFO3NCQUFWLEtBQUsiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21wb25lbnQsIElucHV0LCBDaGFuZ2VEZXRlY3Rpb25TdHJhdGVneSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgU29ja2V0LCBJTywgSW5wdXQgYXMgUmV0ZUlucHV0IH0gZnJvbSAncmV0ZSc7XG5pbXBvcnQgeyBTb2NrZXRUeXBlIH0gZnJvbSAnLi4vdHlwZXMnO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdyZXRlLXNvY2tldCcsXG4gIHRlbXBsYXRlOiBgPGRpdiAqbmdJZj1cInNvY2tldFwiIGNsYXNzPVwic29ja2V0XCIgW25nQ2xhc3NdPVwiW3R5cGUsIHNvY2tldC5uYW1lXVwiIFt0aXRsZV09XCJzb2NrZXQubmFtZVwiPjwvZGl2PmAsXG4gIHN0eWxlVXJsczogWycuL3NvY2tldC5jb21wb25lbnQuc2FzcyddLFxuICBjaGFuZ2VEZXRlY3Rpb246IENoYW5nZURldGVjdGlvblN0cmF0ZWd5Lk9uUHVzaFxufSlcbmV4cG9ydCBjbGFzcyBTb2NrZXRDb21wb25lbnQge1xuICBASW5wdXQoKSBzb2NrZXQhOiBTb2NrZXQ7XG4gIEBJbnB1dCgpIGlvITogSU87XG5cbiAgZ2V0IHR5cGUoKTogU29ja2V0VHlwZSB7XG4gICAgcmV0dXJuIHRoaXMuaW8gaW5zdGFuY2VvZiBSZXRlSW5wdXQgPyAnaW5wdXQnIDogJ291dHB1dCc7XG4gIH1cbn1cbiJdfQ==

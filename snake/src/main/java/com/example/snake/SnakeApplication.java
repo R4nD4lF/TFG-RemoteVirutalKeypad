@@ -28,7 +28,7 @@ public class SnakeApplication {
 		WebSocketClient transport = new SockJsClient(transports);
 		WebSocketStompClient stompClient = new WebSocketStompClient(transport);
 		stompClient.setMessageConverter(new StringMessageConverter());
-		stompClient.connect("http://161.22.45.138:8081/notifications",new SessionHandler());
+		stompClient.connect("http://localhost:8081/notifications",new SessionHandler());
 
 		EventQueue.invokeLater(() -> {
 			JFrame ex = null;

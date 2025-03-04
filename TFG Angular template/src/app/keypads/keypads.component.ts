@@ -6,9 +6,10 @@ import { TemplateService } from 'src/services/template.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
-  selector: 'app-keypads',
-  templateUrl: './keypads.component.html',
-  styleUrls: ['./keypads.component.css']
+    selector: 'app-keypads',
+    templateUrl: './keypads.component.html',
+    styleUrls: ['./keypads.component.css'],
+    standalone: false
 })
 export class KeypadsComponent implements OnInit {
   userData:UserModel;

@@ -14,9 +14,10 @@ import html2canvas from 'html2canvas';
   var keypadImage;
 
 @Component({
-  selector: 'app-inter',
-  templateUrl: './inter.component.html',
-  styleUrls: ['./inter.component.css']
+    selector: 'app-inter',
+    templateUrl: './inter.component.html',
+    styleUrls: ['./inter.component.css'],
+    standalone: false
 })
 export class InterComponent implements OnInit {
   userData:UserModel;

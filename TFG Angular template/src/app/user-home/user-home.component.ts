@@ -5,9 +5,10 @@ import {UserService} from 'src/services/user.service'
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-user-home',
-  templateUrl: './user-home.component.html',
-  styleUrls: ['./user-home.component.css']
+    selector: 'app-user-home',
+    templateUrl: './user-home.component.html',
+    styleUrls: ['./user-home.component.css'],
+    standalone: false
 })
 export class UserHomeComponent implements OnInit {
   @Input() email: string;

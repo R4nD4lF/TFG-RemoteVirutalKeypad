@@ -5,15 +5,16 @@ import { TemplateService } from 'src/services/template.service';
 import interact from 'interactjs';
 import Swal from 'sweetalert2';
 import { ElementModel } from 'src/model/element.model';
-import * as Stomp from 'stompjs';
-import * as SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
+import SockJS from 'sockjs-client';
 
 var stompClient= null;
 
 @Component({
-  selector: 'app-controller',
-  templateUrl: './controller.component.html',
-  styleUrls: ['./controller.component.css']
+    selector: 'app-controller',
+    templateUrl: './controller.component.html',
+    styleUrls: ['./controller.component.css'],
+    standalone: false
 })
 
 export class ControllerComponent implements OnInit {
@@ -50,7 +51,7 @@ export class ControllerComponent implements OnInit {
       connect();
 
       function connect() { 
-        var socket = new SockJS("http://161.22.45.138:8081/notifications");
+        var socket = new SockJS("http://localhost:8081/notifications");
         stompClient = Stomp.over(socket);
          var header={
             AccessControlAllowOrigin : "*"
