@@ -3,19 +3,23 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Node",
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "ES2020",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types", "node_modules"
     ],
+    "types": ["node", "jest", "@types/some-other-types"],
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "useDefineForClassFields": false
   }
 }
