@@ -16,7 +16,7 @@ The project structure and components are:
  - Gradle 6.8.2
  - SpringBoot 2.4.2
  - OpenAPI 5.0.0
- - Angular CLI 11.0.5
+ - Angular CLI 19
  - Node 18.19.1
  - Docker-compose version 1.29.2
  - Docker version 26.1.3
