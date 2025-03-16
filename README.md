@@ -11,6 +11,8 @@ The project structure and components are:
  - **snake** -> This game belongs to *janbodnar*. This is his [repository]( https://github.com/janbodnar/Java-Snake-Game ) and it uses a [BSD-2-Clause license](https://github.com/janbodnar/Java-Snake-Game?tab=BSD-2-Clause-1-ov-file#BSD-2-Clause-1-ov-file)
  - **TFG Angular Template** -> Web application the interacts with the API. Developed with Angular.
 
+![alt text](assets/schema.png)
+
 ## Dependencies
  - Java 11-15
  - Gradle 6.8.2
