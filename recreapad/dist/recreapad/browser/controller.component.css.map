@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/controller/controller.component.css"],
+  "sourcesContent": [".drag-drop {\n    display: inline-block;\n    min-width: 50px;\n    padding: 2em 0.5em;\n    margin: 1rem 0 0 1rem;\n   \n    color: #fff;\n    \n    border: solid 2px #fff;\n  \n    touch-action: none;\n  }\n\n  .dropzone {\n    height: 720px;\n    background-color: #bfe4ff;\n    border: dashed 4px;\n    border-radius: 4px;\n    margin: 10px auto 30px;\n    margin-left: 10px;\n    padding: 10px;\n    width: 1490px;\n  }\n  .keycenter{\n      margin-top: 5%;\n      margin-left: 10%;\n      margin-right: 20%;\n  }"],
+  "mappings": ";AAAA,CAAC;AACG,WAAS;AACT,aAAW;AACX,WAAS,IAAI;AACb,UAAQ,KAAK,EAAE,EAAE;AAEjB,SAAO;AAEP,UAAQ,MAAM,IAAI;AAElB,gBAAc;AAChB;AAEA,CAAC;AACC,UAAQ;AACR,oBAAkB;AAClB,UAAQ,OAAO;AACf,iBAAe;AACf,UAAQ,KAAK,KAAK;AAClB,eAAa;AACb,WAAS;AACT,SAAO;AACT;AACA,CAAC;AACG,cAAY;AACZ,eAAa;AACb,gBAAc;AAClB;",
+  "names": []
+}

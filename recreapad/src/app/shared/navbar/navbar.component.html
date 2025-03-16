@@ -1,0 +1,126 @@
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+  <div class="container">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+      <img src="./assets/img/brand/byw/logo_large.png" width = "120px" height="90px">
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/home']">
+              <img src="./assets/img/brand/orange/logo_large.png">
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                  [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text text-dark">Home</span>
+          </a>
+          <div class="dropdown-menu">
+            <a [routerLink]="['/landing']" class="dropdown-item">What is RecreaPad?</a>
+            <a [routerLink]="['/tutorial']" class="dropdown-item">Quickstart tutorial</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLogged() === 'true'">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text text-dark">Templates</span>
+          </a>
+          <div class="dropdown-menu">
+            <a [routerLink]="['/keypads']" class="dropdown-item">Your templates</a>
+            <a href="javascript:void(0)" (click)="createNewTemplate()" class="dropdown-item">Create a Template</a>
+            <a [routerLink]="['/keypads']" class="dropdown-item">Examples</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text text-dark">Support</span>
+          </a>
+          <div class="dropdown-menu">
+            <a [routerLink]="['/rete']" class="dropdown-item">Help</a>
+            <a [routerLink]="['/contact']" class="dropdown-item">Contact Us</a>
+            <a href="javascript:void(0)"  class="dropdown-item text-dark" data-toggle="modal" data-target="#exampleModalLong">Terms and Conditions</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <li class="nav-item d-none d-lg-block ml-lg-4"
+          *ngIf="isLogged() === 'false'">
+          <a href="javascript:void(0)" [routerLink]="['/login']" routerLinkActive="router-link-active" class="btn btn-neutral btn-icon">
+            <span class="btn-inner--icon">
+              <i class="fa fa-user mr-2"></i>
+            </span>
+            <span class="nav-link-inner--text">Login</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4"
+          *ngIf="isLogged() === 'false'">
+          <a href="javascript:void(0)" [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn btn-success btn-icon mb-3 mb-sm-0">
+            <span class="btn-inner--icon">
+              <i class="fa fa-user-plus mr-2"></i>
+            </span>
+            <span class="nav-link-inner--text">Sign Up</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4"
+          *ngIf="isLogged() === 'true'">
+          <a href="javascript:void(0)" [routerLink]="['/userhome']" routerLinkActive="router-link-active" class="btn btn-outline-neutral btn-icon">
+            <span class="btn-inner--icon">
+              <i class="fa fa-user mr-2"></i>
+            </span>
+            <span class="nav-link-inner--text">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4"
+          *ngIf="isLogged() === 'true'">
+          <a href="javascript:void(0)" (click)="doLogout()" class="btn btn-neutral btn-icon">
+            <span class="btn-inner--icon">
+              <i class="fa fa-sign-out mr-2"></i>
+            </span>
+            <span class="nav-link-inner--text">Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Terms and Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¿Aceptas vender tu alma al diablo, comprar un apartamento en una isla inexistente y adoptar 5 niños huerfanos?.</p>
+        <p>El siguiente texto es de relleno:</p>
+        <p>"De pronto, como si un remolino hubiera echado raíces en el centro del pueblo, llegó la compañía bananera perseguida por la hojarasca. Era una hojarasca revuelta, alborotada, formada por los desperdicios humanos y materiales de los otros pueblos; rastrojos de una guerra civil que cada vez parecía más remota e inverosímil. La hojarasca era implacable. Todo lo contaminaba de su revuelto olor multitudinario, olor de secreción a flor de piel y de recóndita muerte. En menos de un año arrojó sobre el pueblo los escombros de numerosas catástrofes anteriores a ella misma, esparció en las calles su confusa carga de desperdicios. Y esos desperdicios, precipitadamente, al compás atolondrado e imprevisto de la tormenta, se iban seleccionando, individualizándose, hasta convertir lo que fue un callejón con un río en un extremo un corral para los muertos en el otro, en un pueblo diferente y complicado, hecho con los desperdicios de los otros pueblos. Allí vinieron, confundidos con la hojarasca humana, arrastrados por su impetuosa fuerza, los desperdicios de los almacenes, de los hospitales, de los salones de diversión, de las plantas eléctricas; desperdicios de mujeres solas y de hombres que amarraban la mula en un horcón del hotel, trayendo como un único equipaje un baúl de madera o un atadillo de ropa, y a los pocos meses tenían casa propia, dos concubinas y el título militar que les quedaron debiendo por haber llegado tarde a la guerra”.</p>
+        <p>"El coronel abrió el tarro del café y comprobó que no había más de una cucharadita. Retiró la olla del fogón, vertió la mitad del agua en el piso de tierra, y con un cuchillo raspó el interior del tarro sobre la olla hasta cuando se desprendieron las últimas raspaduras del polvo de café revueltas con óxido de lata”.</p>
+        <p>"Durante el fin de semana los gallinazos se metieron por los balcones de la casa  presidencial, destrozaron a picotazos las mallas de alambre de las ventanas y removieron con sus alas el tiempo estancado en el interior, y en la madrugada del lunes la ciudad despertó de su letargo de siglos con una tibia y tierna brisa de muerto grande y de podrida grandeza. Sólo entonces nos atrevimos a entrar sin embestir los carcomidos muros de piedra fortificada, como querían los más resueltos, ni desquiciar con yuntas de bueyes la entrada principal, como otros proponían, pues bastó con que alguien los empujara para que cedieran en sus goznes los portones blindados que en los tiempos heroicos de la casa habían resistido a las lombardas de William Dampier. Fue como penetrar en el ámbito de otra época, porque el aire era más tenue en los pozos de escombros de la vasta guarida del poder, y el silencio era más antiguo, y las cosas eran arduamente visibles en la luz decrépita”.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Accept Terms and Conditions</button>
+      </div>
+    </div>
+  </div>
+</div>

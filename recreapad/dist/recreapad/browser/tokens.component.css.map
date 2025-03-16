@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/tokens/tokens.component.css"],
+  "sourcesContent": [".up{\n    margin-top: 30px;\n    margin-bottom: auto;\n}\n.right{\n    margin-left: 30px ;\n    margin-right: 30px ;\n}"],
+  "mappings": ";AAAA,CAAC;AACG,cAAY;AACZ,iBAAe;AACnB;AACA,CAAC;AACG,eAAa;AACb,gBAAc;AAClB;",
+  "names": []
+}
