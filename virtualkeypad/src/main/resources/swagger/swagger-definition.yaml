@@ -55,8 +55,7 @@ paths:
       description: |
         This function returns all the users in the system accourding of the searching parameters.
       parameters:
-        - $ref: "#/components/parameters/name"
-        - $ref: "#/components/parameters/lastname"
+        - $ref: "#/components/parameters/userName"
         - $ref: "#/components/parameters/email"
       responses:
         '200':
@@ -393,7 +392,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userRequest'
+              $ref: '#/components/schemas/createUserRequest'
       responses:
         '201':
           description: >-
@@ -518,19 +517,16 @@ components:
         id:
           type: integer
           example: 1
-    userRequest:
+    createUserRequest:
       type: object
       properties:
-        name:
-          type: string
-          example: myname
-        lastname:
-          type: string
-          example: milastname
         username:
           type: string
           example: myUserName
         password:
+          type: string
+          example: mypass
+        confirmPassword:
           type: string
           example: mypass
         email:
@@ -543,18 +539,9 @@ components:
         userId:
           type: integer
           example: 1
-        name:
-          type: string
-          example: myname
-        lastname:
-          type: string
-          example: milastname
-        username:
+        userName:
           type: string
           example: myUserName
-        password:
-          type: string
-          example: mypass
         email:
           type: string
           format: email
@@ -719,14 +706,14 @@ components:
       required: true
       schema:
         type: integer
-    name:
-      name: name
+    userName:
+      name: userName
       in: query
-      description: "It will return the users with this name if it's specified."
+      description: "It will return the users with this username if it's specified."
       required: false
       schema:
         type: string
-      example: MyName
+      example: UserNamme
     templatename:
       name: templatename
       in: query
@@ -753,14 +740,6 @@ components:
         type: string
         format: date
       example: "2021-01-28"
-    lastname:
-      name: lastname
-      in: query
-      description: "It will return the users with this lastname if it's specified."
-      required: false
-      schema:
-        type: string
-      example: Lastname
     email:
       name: email
       in: query

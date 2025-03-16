@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user",schema = "public" )
+@Table(name = "Users",schema = "public" )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,12 +20,6 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private long userId;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "last_name")
-    private String lastname;
 
     @Column(name = "user_name")
     private String userName;

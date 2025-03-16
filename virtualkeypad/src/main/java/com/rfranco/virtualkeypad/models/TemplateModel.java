@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "template",schema = "public" )
+@Table(name = "Templates",schema = "public" )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

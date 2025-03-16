@@ -93,9 +93,9 @@ task generateSwagger {
 
 task copyJarToDockerContext(type: Copy) {
 	from files("$project.buildDir/libs/")
-	into "$project.projectDir/infraestructure/local/libs"
+	into "$project.projectDir/../deployment/libs"
 }
 
 task deleteJarFromLocal(type: Delete){
-	delete "$project.projectDir/infraestructure/local/libs/"
+	delete "$project.projectDir/../deployment/libs"
 }

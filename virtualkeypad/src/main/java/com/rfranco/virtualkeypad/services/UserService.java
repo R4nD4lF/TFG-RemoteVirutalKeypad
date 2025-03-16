@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.rfranco.virtualkeypad.constants.Messages.*;
+
 @Slf4j
 @Service
 public class UserService {
@@ -30,31 +32,11 @@ public class UserService {
             return this.userrepository.findById((long) userId);
         }
     }
-
-    public List<UserModel> getUsers(String name,String email, String lastname){
+    //TODO: uuufff esto hay que cambiarlo
+    public List<UserModel> getUsers(String userName,String email){
         try {
-            if (name == null && email == null && lastname == null) {
-                List<UserModel> users = (List<UserModel>)this.userrepository.findAll();
-                return users;
-            } else if (name == null && email == null) {
-                return this.userrepository.findByLastname(lastname);
-            } else if (email == null && lastname == null) {
-                return this.userrepository.findByName(name);
-            } else if (name == null && lastname == null) {
-                List<UserModel> emailList = new ArrayList<>();
-                if(this.userrepository.findByEmail(email) != null) {
-                    emailList.add(this.userrepository.findByEmail(email));
-                }
-                return emailList;
-            } else if (name == null) {
-                return this.userrepository.findByEmailAndLastname(email, lastname);
-            } else if (lastname == null) {
-                return this.userrepository.findByNameAndEmail(name, email);
-            } else if (email == null) {
-                return this.userrepository.findByNameAndLastname(name, lastname);
-            } else {
-                return this.userrepository.findByNameAndEmailAndLastname(name, email, lastname);
-            }
+            List<UserModel> users = (List<UserModel>)this.userrepository.findAll();
+            return users;
         }catch (Exception e){
             log.error("Error getting user information.", e);
             throw new InternalServerException("Error getting users information");
@@ -76,10 +58,8 @@ public class UserService {
         }else{
             try {
                 UserModel usermodel = this.userrepository.findById((long) userId).get();
-                usermodel.setName(user.getName());
                 usermodel.setEmail(user.getEmail());
-                usermodel.setLastname(user.getLastname());
-                usermodel.setUserName(user.getUsername());
+                usermodel.setUserName(user.getUserName());
 
                 this.userrepository.save(usermodel);
             }catch (Exception e){

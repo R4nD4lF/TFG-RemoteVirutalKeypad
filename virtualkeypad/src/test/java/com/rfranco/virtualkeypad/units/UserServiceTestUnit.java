@@ -43,7 +43,6 @@ public class UserServiceTestUnit {
         int userId = 110;
         UserModel model = UserModel.builder().userId(110)
                 .userName("username")
-                .lastname("test")
                 .email("test@test.com").build();
         UserReponse response = fixture.create(UserReponse.class);
         Mockito.when(this.userrepository.findById((long)userId)).thenReturn(Optional.of(model));
@@ -65,7 +64,6 @@ public class UserServiceTestUnit {
         int userId = 110;
         UserModel model = UserModel.builder().userId(110)
                 .userName("username")
-                .lastname("test")
                 .email("test@test.com").build();
         Mockito.when(this.userrepository.findById((long) userId)).thenReturn(Optional.of(model));
         this.userService.deleteUser(userId);
@@ -85,7 +83,6 @@ public class UserServiceTestUnit {
         int userId = 20;
         UserModel model = UserModel.builder().userId(110)
                 .userName("username")
-                .lastname("test")
                 .email("test@test.com").build();
         Mockito.when(this.userrepository.findById((long) userId)).thenReturn(Optional.of(model));
         this.userService.getUser(userId);

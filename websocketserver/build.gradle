@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.websocket'
-version = '1.0.0'
+version = '1.0.2'
 sourceCompatibility = '11'
 
 repositories {
@@ -28,4 +28,13 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+task copyJarToDockerContext(type: Copy) {
+	from files("$project.buildDir/libs/")
+	into "$project.projectDir/../deployment/libs"
+}
+
+task deleteJarFromLocal(type: Delete){
+	delete "$project.projectDir/../deployment/libs"
 }

@@ -31,8 +31,8 @@ public class UsersApiController implements UsersApi{
     }
 
     @Override
-    public ResponseEntity<List<UserReponse>> getUsers(@Valid String name, @Valid String lastname, @Valid String email) {
-        return new ResponseEntity(this.userservice.getUsers(name, email, lastname),HttpStatus.OK);
+    public ResponseEntity<List<UserReponse>> getUsers(@Valid String userName,@Valid String email) {
+        return new ResponseEntity(this.userservice.getUsers(userName, email),HttpStatus.OK);
     }
 
     @CrossOrigin
