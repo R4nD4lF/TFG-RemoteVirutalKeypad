@@ -17,7 +17,7 @@ sourceSets {
 }
 
 group = 'com.rfranco.virtualkeypad'
-version = '1.0.0'
+version = '1.0.2'
 sourceCompatibility = '11'
 
 configurations {
@@ -49,6 +49,8 @@ dependencies {
 	implementation 'org.webjars:stomp-websocket:2.3.3'
 	implementation 'org.webjars:bootstrap:3.3.7'
 	implementation 'org.webjars:jquery:3.1.1-1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
 
 	compileOnly 'org.projectlombok:lombok:1.18.18'
 	runtimeOnly 'com.h2database:h2:1.4.200'
@@ -87,4 +89,13 @@ task generateSwagger {
 		])
 		new DefaultGenerator().opts(config.toClientOptInput()).generate()
 	}
+}
+
+task copyJarToDockerContext(type: Copy) {
+	from files("$project.buildDir/libs/")
+	into "$project.projectDir/infraestructure/local/libs"
+}
+
+task deleteJarFromLocal(type: Delete){
+	delete "$project.projectDir/infraestructure/local/libs/"
 }
